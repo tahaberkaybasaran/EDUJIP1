@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { Link, useNavigate } from "react-router-dom";
+//! import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
   // create a state which holds an object that involves students info
@@ -12,7 +12,7 @@ const Create = () => {
     schoolNo: "",
   });
 
-  // const navigate = useNavigate();
+  //! const navigate = useNavigate();
 
   // const navigate = useNavigate();
   // execute submit
@@ -21,7 +21,7 @@ const Create = () => {
     axios // creating a post request the data will be sent to the backend
       .post("http://localhost:5000/add_user", values) // sends student information to the server
       .then((res) => {
-        // navigate("/");
+        //! navigate("/");
         console.log(res);
       })
       .catch((err) => {
@@ -29,55 +29,70 @@ const Create = () => {
       });
   };
   return (
-    <div className="container vh-100 vw-100 bg-info">
-      <div className="row">
-        <h3>Add Student</h3> //creating form structure
-        {/* <div className="d-flex justify-content-end">
-          <Link to="/" class="btn btn-success">
+    <div className="container border rounded bg-info vh-100 vw-100">
+      <div className="row justify-content-center align-items-center">
+        <h3>Add Student</h3>
+        <div className="d-flex justify-content-end">
+          {/* <Link to="/" class="btn btn-success">
             Home
-          </Link>
-        </div> */}
+          </Link> */}
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="TC">TC kimlik no</label>
+            <label htmlFor="TC" className="mt-3">
+              TC kimlik no
+            </label>
             <input
               type="number"
+              className="form-control"
               onChange={(e) => {
                 setValues({ ...values, tc: e.target.value });
               }}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="name">Isim</label>
+            <label htmlFor="name" className="mt-3">
+              Isim
+            </label>
             <input
               type="text"
+              className="form-control"
               onChange={(e) => {
                 setValues({ ...values, name: e.target.value });
               }}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="surname">Soyisim</label>
+            <label htmlFor="surname" className="mt-3">
+              Soyisim
+            </label>
             <input
               type="text"
+              className="form-control"
               onChange={(e) => {
                 setValues({ ...values, surname: e.target.value });
               }}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="schoolName">Okul Ismi</label>
+            <label htmlFor="schoolName" className="mt-3">
+              Okul Ismi
+            </label>
             <input
               type="text"
+              className="form-control"
               onChange={(e) => {
                 setValues({ ...values, schoolName: e.target.value });
               }}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="schoolNo">Okul Numarasi</label>
+            <label htmlFor="schoolNo" className="mt-3">
+              Okul Numarasi
+            </label>
             <input
               type="number"
+              className="form-control"
               onChange={(e) => {
                 setValues({ ...values, schoolNo: e.target.value });
               }}
