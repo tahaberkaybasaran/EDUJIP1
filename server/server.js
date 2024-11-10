@@ -19,6 +19,26 @@ const db = mysql.createConnection({
   database: "students",
 });
 
+app.post("/add_user", (req, res) => {
+  //POST request to API endpoint for add data to DB
+  const sql =
+    "INSERT INTO students_informations (tc,ad,soyad,okul_adi,okul_no) VALUES (?,?,?,?,?)"; // SQL query creates data from received data
+
+  const values = [
+    req.body.tc,
+    req.body.name,
+    req.body.surname,
+    req.body.schoolName,
+    req.body.schoolNo,
+  ];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      return res.json({ message: "An error has occured" + err });
+    }
+    return res.json({ message: "SUCCESS student data has added" });
+  });
+});
+
 app.listen(port, () => {
   console.log("server has started to listen");
 });
