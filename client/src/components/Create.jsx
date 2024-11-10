@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-//! import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
   // create a state which holds an object that involves students info
@@ -12,7 +12,7 @@ const Create = () => {
     schoolNo: "",
   });
 
-  //! const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const navigate = useNavigate();
   // execute submit
@@ -21,7 +21,7 @@ const Create = () => {
     axios // creating a post request the data will be sent to the backend
       .post("http://localhost:5000/add_user", values) // sends student information to the server
       .then((res) => {
-        //! navigate("/");
+        navigate("/");
         console.log(res);
       })
       .catch((err) => {
