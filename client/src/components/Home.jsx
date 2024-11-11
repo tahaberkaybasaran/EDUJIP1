@@ -17,10 +17,10 @@ const Home = () => {
       <h3>Students</h3>
       <div className="d-flex justify-content-end">
         <Link className="btn btn-success" to="/create">
-          Add Student
+          Add Student +
         </Link>
       </div>
-      <table>
+      <table className="bg-light border ">
         <thead>
           <tr>
             <th>TC</th>
@@ -35,7 +35,7 @@ const Home = () => {
             return (
               <tr key={student.id}>
                 <td>{student.tc}</td>
-                <td>{student.adi}</td>
+                <td>{student.ad}</td>
                 <td>{student.soyad}</td>
                 <td>{student.okul_adi}</td>
                 <td>{student.okul_no}</td>

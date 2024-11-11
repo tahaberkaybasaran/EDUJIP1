@@ -49,6 +49,37 @@ app.get("/students", (req, res) => {
   });
 });
 
+app.get("/get_student/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM students_informations WHERE `id`= ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) res.json({ message: "Server error" });
+    return res.json(result);
+  });
+});
+
+app.post("/edit_user/:id", (req, res) => {
+  //POST request to API endpoint for add data to DB
+  const id = req.params.id;
+  const sql =
+    "UPDATE INTO students_informations SET `tc`=?, `ad`=?, `soyad`=?, `okul_adi`=?, `okul_no`=? WHERE id=?"; // SQL query creates data from received data
+
+  const values = [
+    req.body.tc,
+    req.body.name,
+    req.body.surname,
+    req.body.schoolName,
+    req.body.schoolNo,
+    id,
+  ];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      return res.json({ message: "An error has occured" + err });
+    }
+    return res.json({ message: "SUCCESS student data has added" });
+  });
+});
+
 app.listen(port, () => {
   console.log("server has started to listen");
 });

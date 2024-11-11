@@ -18,7 +18,8 @@ const Create = () => {
   // execute submit
   const handleSubmit = (e) => {
     e.preventDefault(); // after submission refresh to default
-    axios // creating a post request the data will be sent to the backend
+    // creating a post request the data will be sent to the backend
+    axios
       .post("http://localhost:5000/add_user", values) // sends student information to the server
       .then((res) => {
         navigate("/");
@@ -29,10 +30,10 @@ const Create = () => {
       });
   };
   return (
-    <div className="container border rounded bg-info vh-100 vw-100">
-      <div className="row justify-content-center align-items-center">
-        <h3>Add Student</h3>
-        <div className="d-flex justify-content-end">
+    <div className="container d-flex justify-content-center border rounded bg-info">
+      <div className="row ">
+        <h3 className="text-center">Add Student</h3>
+        <div>
           {/* <Link to="/" class="btn btn-success">
             Home
           </Link> */}
