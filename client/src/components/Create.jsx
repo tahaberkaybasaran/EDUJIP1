@@ -40,7 +40,7 @@ const Create = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="TC" className="mt-3">
+            <label htmlFor="tc" className="mt-3">
               TC kimlik no
             </label>
             <input
