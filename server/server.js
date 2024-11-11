@@ -49,7 +49,7 @@ app.get("/students", (req, res) => {
   });
 });
 
-app.get("/get_student/:id", (req, res) => {
+app.get("/get_students/:id", (req, res) => {
   const id = req.params.id;
   const sql = "SELECT * FROM students_informations WHERE `id`= ?";
   db.query(sql, [id], (err, result) => {
@@ -72,6 +72,20 @@ app.post("/edit_user/:id", (req, res) => {
     req.body.schoolNo,
     id,
   ];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      return res.json({ message: "An error has occured" + err });
+    }
+    return res.json({ message: "SUCCESS student data has added" });
+  });
+});
+
+app.delete("/delete/:id", (req, res) => {
+  //POST request to API endpoint for add data to DB
+  const id = req.params.id;
+  const sql = "DELETE FROM students_informations WHERE id=?"; // SQL query creates data from received data
+
+  const values = [id];
   db.query(sql, values, (err, result) => {
     if (err) {
       return res.json({ message: "An error has occured" + err });

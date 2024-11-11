@@ -7,7 +7,7 @@ const Edit = () => {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/get_student/${id}`)
+      .get(`http://localhost:5000/get_students/${id}`)
       .then((res) => {
         setData(res.data);
       })

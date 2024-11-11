@@ -4,14 +4,27 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [isDeleted, setIsDeleted] = useState(true);
 
   useEffect(() => {
+    if (isDeleted) {
+      setIsDeleted(false);
+    }
     axios.get("http://localhost:5000/students").then((res) => {
       setData(res.data);
       console.log(res);
       console.log(res.data);
     });
-  }, []); //works once when component mount
+  }, [isDeleted]); //works once when component mount
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:5000/delete/${id}`)
+      .then((res) => {
+        setIsDeleted(true);
+      })
+      .cath((err) => console.log(err));
+  };
   return (
     <div className="container-fluid bg-primary vh-100 vw-100">
       <h3>Students</h3>
@@ -40,12 +53,6 @@ const Home = () => {
                 <td>{student.okul_adi}</td>
                 <td>{student.okul_no}</td>
                 <td>
-                  <Link
-                    className="btn mx-2 btn-success"
-                    to={`/read/${student.id}`}
-                  >
-                    Read
-                  </Link>
                   <Link
                     className="btn mx-2 btn-success"
                     to={`/edit/${student.id}`}
